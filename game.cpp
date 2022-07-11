@@ -4,7 +4,8 @@
 Game::Game()
     : timer(new QTimer),
       scene(new QGraphicsScene),
-      view(new MainView(this))
+      view(new MainView(this)),
+      timeout(500)
 {
     for (int i = 0; i < rows; ++i)
     {
@@ -20,6 +21,7 @@ Game::Game()
     //        for (int j = 0; j < cols; ++j)
     //            count_change(i, j);
 
+    timer->setInterval(timeout);
     connect(timer, SIGNAL(timeout()), this, SLOT(my_update()));
 
     view->setTransformationAnchor(QGraphicsView::NoAnchor);
@@ -70,10 +72,25 @@ void Game::pause()
     if (timer->isActive())
         timer->stop();
     else
-        timer->start(200);
+        timer->start();
 }
 
 bool Game::is_pause()
 {
     return !timer->isActive();
+}
+
+void Game::change_timeout(int change)
+{
+    if (timeout + change > 0 && timeout + change <= maxTimeout)
+        timeout += change;
+    timer->setInterval(timeout);
+}
+
+void Game::clear()
+{
+    for (int i = 0; i < rows; ++i)
+        for (int j = 0; j < cols; ++j)
+            cells[i][j]->clear();
+    view->viewport()->update();
 }

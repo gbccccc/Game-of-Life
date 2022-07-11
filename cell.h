@@ -16,8 +16,7 @@ class Cell : public QObject, public QGraphicsItem
 
 public:
     Cell(int row, int col, Game *mw, QGraphicsView *view);
-    void live();
-    void die();
+    void clear();
     void add_count(int count);
     bool is_alive();
     int get_change();

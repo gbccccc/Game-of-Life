@@ -13,14 +13,11 @@ Cell::Cell(int row, int col, Game *game, QGraphicsView *view)
     this->setPos(col * length, row * length);
 }
 
-void Cell::live()
+void Cell::clear()
 {
-    alive = true;
-}
-
-void Cell::die()
-{
-    alive = false;
+    this->change = 0;
+    this->alive = false;
+    this->surroundCount = 0;
 }
 
 void Cell::add_count(int count)

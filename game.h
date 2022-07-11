@@ -22,7 +22,8 @@ public:
     bool is_pause();
 
     void pause();
-
+    void change_timeout(int change);
+    void clear();
 public slots:
     void my_update();
 private:
@@ -33,5 +34,8 @@ private:
 
     const int rows = 50, cols = 50;
     QVector<QVector<Cell *>> cells;
+
+    const int maxTimeout = 1000;
+    int timeout;
 };
 #endif // MAINWINDOW_H
