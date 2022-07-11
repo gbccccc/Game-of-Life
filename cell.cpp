@@ -1,13 +1,13 @@
 #include "cell.h"
-#include "mainwindow.h"
+#include "game.h"
 #include "mainview.h"
 
-Cell::Cell(int row, int col, MainWindow *mw, QGraphicsView *view)
+Cell::Cell(int row, int col, Game *game, QGraphicsView *view)
     : alive(false),
       surroundCount(0),
       row(row), col(col),
       change(0),
-      mw(mw),
+      game(game),
       view(view)
 {
     this->setPos(col * length, row * length);
@@ -81,7 +81,7 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
         return;
     }
 
-    if (!mw->is_pause())
+    if (!game->is_pause())
     {
         event->ignore();
         return;
@@ -93,6 +93,6 @@ void Cell::mousePressEvent(QGraphicsSceneMouseEvent *event)
     else
         change = -1;
 
-    mw->count_change(row, col);
+    game->count_change(row, col);
     view->viewport()->update();
 }

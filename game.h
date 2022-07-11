@@ -10,13 +10,13 @@
 
 #include "cell.h"
 
-class MainWindow : public QObject
+class Game : public QObject
 {
     Q_OBJECT
 
 public:
-    MainWindow();
-    ~MainWindow();
+    Game();
+    ~Game();
 
     void count_change(int row, int col);
     bool is_pause();

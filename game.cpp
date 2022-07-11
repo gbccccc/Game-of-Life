@@ -1,7 +1,7 @@
-#include "mainwindow.h"
+#include "game.h"
 #include "mainview.h"
 
-MainWindow::MainWindow()
+Game::Game()
     : timer(new QTimer),
       scene(new QGraphicsScene),
       view(new MainView(this))
@@ -29,7 +29,7 @@ MainWindow::MainWindow()
     view->show();
 }
 
-MainWindow::~MainWindow()
+Game::~Game()
 {
     delete timer;
 
@@ -38,7 +38,7 @@ MainWindow::~MainWindow()
             delete cells[i][j];
 }
 
-void MainWindow::my_update()
+void Game::my_update()
 {
     for (int i = 0; i < rows; ++i)
         for (int j = 0; j < cols; ++j)
@@ -53,7 +53,7 @@ void MainWindow::my_update()
     view->viewport()->update();
 }
 
-void MainWindow::count_change(int row, int col)
+void Game::count_change(int row, int col)
 {
     int change = cells[row][col]->get_change();
     if (change == 0)
@@ -65,7 +65,7 @@ void MainWindow::count_change(int row, int col)
                 cells[row + i][col + j]->add_count(change);
 }
 
-void MainWindow::pause()
+void Game::pause()
 {
     if (timer->isActive())
         timer->stop();
@@ -73,7 +73,7 @@ void MainWindow::pause()
         timer->start(200);
 }
 
-bool MainWindow::is_pause()
+bool Game::is_pause()
 {
     return !timer->isActive();
 }

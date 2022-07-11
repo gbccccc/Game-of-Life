@@ -4,16 +4,16 @@
 #include <QGraphicsView>
 #include <QKeyEvent>
 
-class MainWindow;
+class Game;
 
 class MainView : public QGraphicsView
 {
 public:
-    MainView(MainWindow *mw);
+    MainView(Game *mw);
 
     void update_paint();
 private:
-    MainWindow *mw;
+    Game *game;
 protected:
     void keyPressEvent(QKeyEvent *e);
 };

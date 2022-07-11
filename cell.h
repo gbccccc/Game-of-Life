@@ -8,14 +8,14 @@
 
 #include "mainview.h"
 
-class MainWindow;
+class Game;
 
 class Cell : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 
 public:
-    Cell(int row, int col, MainWindow *mw, QGraphicsView *view);
+    Cell(int row, int col, Game *mw, QGraphicsView *view);
     void live();
     void die();
     void add_count(int count);
@@ -37,7 +37,7 @@ private:
     int col;
     int change;
 
-    MainWindow *mw;
+    Game *game;
     QGraphicsView *view;
 
 protected:

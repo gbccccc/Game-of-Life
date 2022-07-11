@@ -10,14 +10,14 @@ CONFIG += c++11
 
 SOURCES += \
     cell.cpp \
+    game.cpp \
     main.cpp \
-    mainview.cpp \
-    mainwindow.cpp
+    mainview.cpp
 
 HEADERS += \
  cell.h \
  mainview.h \
- mainwindow.h
+ game.h
 
 FORMS +=
 
