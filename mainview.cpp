@@ -21,10 +21,10 @@ void MainView::keyPressEvent(QKeyEvent *e)
         game->clear();
         break;
     case (Qt::Key_Equal):
-        game->change_timeout(-25);
+        game->change_timeout(-50);
         break;
     case (Qt::Key_Minus):
-        game->change_timeout(25);
+        game->change_timeout(50);
         break;
 
     }

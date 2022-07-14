@@ -32,7 +32,7 @@ private:
     QGraphicsScene *scene;
     QGraphicsView *view;
 
-    const int rows = 50, cols = 50;
+    const int rows = 64, cols = 64;
     QVector<QVector<Cell *>> cells;
 
     const int maxTimeout = 1000;
